@@ -59,6 +59,18 @@ class Ragnaros(HeroCard):
     def __init__(self):
         super().__init__("Ragnaros the Firelord (hero)", CHARACTER_CLASS.ALL, 8, DieInsect)
 
+class Magni(HeroCard):
+    def __init__(self):
+        super().__init__("Magni Bronzebeard", CHARACTER_CLASS.WARRIOR, 30, WarriorPower)
+
+class Medivh(HeroCard):
+    def __init__(self):
+        super().__init__("Medivh", CHARACTER_CLASS.MAGE, 30, MagePower)
+
+class Alleria(HeroCard):
+    def __init__(self):
+        super().__init__("Alleria Windrunner", CHARACTER_CLASS.HUNTER, 30, HunterPower)
+
 
 def hero_for_class(character_class):
     if character_class == CHARACTER_CLASS.DRUID:
