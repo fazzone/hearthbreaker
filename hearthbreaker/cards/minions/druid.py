@@ -12,7 +12,7 @@ from hearthbreaker.tags.status import ChangeAttack, ChangeHealth, Taunt, ManaCha
 from hearthbreaker.cards.spells.neutral import spare_part_list
 
 
-class Moonfire(ChoiceCard):
+class KeeperMoonfire(ChoiceCard):
     def __init__(self):
         super().__init__("Moonfire", 0, CHARACTER_CLASS.DRUID, CARD_RARITY.COMMON, ref_name="moonfire_keeper")
 
@@ -25,7 +25,7 @@ class Dispel(ChoiceCard):
 class KeeperOfTheGrove(MinionCard):
     def __init__(self):
         super().__init__("Keeper of the Grove", 4, CHARACTER_CLASS.DRUID, CARD_RARITY.RARE, choices=[
-            Choice(Moonfire(), Damage(2), CharacterSelector(players=BothPlayer(), picker=UserPicker())),
+            Choice(KeeperMoonfire(), Damage(2), CharacterSelector(players=BothPlayer(), picker=UserPicker())),
             Choice(Dispel(), Silence(), MinionSelector(players=BothPlayer(), picker=UserPicker()))
         ])
 
@@ -290,21 +290,21 @@ class FlameBird(MinionCard):
         return Minion(2, 5)
 
 
-class FlameCatForm(ChoiceCard):
+class FirecatForm(ChoiceCard):
     def __init__(self):
-        super().__init__("Flame Cat Form", 0, CHARACTER_CLASS.DRUID, CARD_RARITY.COMMON)
+        super().__init__("Firecat Form", 0, CHARACTER_CLASS.DRUID, CARD_RARITY.COMMON)
 
 
-class FlameBirdForm(ChoiceCard):
+class FireHawkForm(ChoiceCard):
     def __init__(self):
-        super().__init__("Flame Bird Form", 0, CHARACTER_CLASS.DRUID, CARD_RARITY.COMMON)
+        super().__init__("Fire Hawk Form", 0, CHARACTER_CLASS.DRUID, CARD_RARITY.COMMON)
 
 
 class DruidOfTheFlame(MinionCard):
     def __init__(self):
         super().__init__("Druid of the Flame", 3, CHARACTER_CLASS.DRUID, CARD_RARITY.COMMON, choices=[
-            Choice(FlameCatForm(), Transform(FlameCat()), SelfSelector()),
-            Choice(FlameBirdForm(), Transform(FlameBird()), SelfSelector())
+            Choice(FirecatForm(), Transform(FlameCat()), SelfSelector()),
+            Choice(FireHawkForm(), Transform(FlameBird()), SelfSelector())
         ])
 
     def create_minion(self, player):
