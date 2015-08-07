@@ -129,33 +129,33 @@ class ExcessMana(SpellCard):
         player.draw()
 
 
+class WrathOne(ChoiceCard):
+    def __init__(self):
+        super().__init__("Wrath 1 Damage", 0, CHARACTER_CLASS.DRUID, CARD_RARITY.COMMON, False,
+                         target_func=hearthbreaker.targeting.find_minion_spell_target)
+
+        def use(self, player, game):
+            target.damage(player.effective_spell_damage(1), self)
+            player.draw()
+
+class WrathThree(ChoiceCard):
+    def __init__(self):
+        super().__init__("Wrath 3 Damage", 0, CHARACTER_CLASS.DRUID, CARD_RARITY.COMMON, False,
+                         target_func=hearthbreaker.targeting.find_minion_spell_target)
+
+    def use(self, player, game):
+        target.damage(player.effective_spell_damage(3), self)
+
+
 class Wrath(SpellCard):
     def __init__(self):
         super().__init__("Wrath", 2, CHARACTER_CLASS.DRUID, CARD_RARITY.COMMON,
                          target_func=hearthbreaker.targeting.find_minion_spell_target)
 
     def use(self, player, game):
-        class WrathOne(ChoiceCard):
-            def __init__(self):
-                super().__init__("Wrath 1 Damage", 0, CHARACTER_CLASS.DRUID, CARD_RARITY.COMMON, False,
-                                 target_func=hearthbreaker.targeting.find_minion_spell_target)
-
-            def use(self, player, game):
-                target.damage(player.effective_spell_damage(1), wrath)
-                player.draw()
-
-        class WrathThree(ChoiceCard):
-            def __init__(self):
-                super().__init__("Wrath 3 Damage", 0, CHARACTER_CLASS.DRUID, CARD_RARITY.COMMON, False,
-                                 target_func=hearthbreaker.targeting.find_minion_spell_target)
-
-            def use(self, player, game):
-                target.damage(player.effective_spell_damage(3), wrath)
-
         super().use(player, game)
         option = game.current_player.agent.choose_option([WrathOne(), WrathThree()], player)
         target = self.target
-        wrath = self
         option.use(player, game)
 
 
