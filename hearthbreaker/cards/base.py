@@ -157,6 +157,9 @@ class Card(Bindable, GameObject):
         """
         return self.name + " (" + str(self.mana) + " mana)"
 
+    def __repr__(self):
+        return '<' + self.name + '>'
+
     def replace(self, new_card):
         index = self.player.hand.index(self)
         self.unattach()
