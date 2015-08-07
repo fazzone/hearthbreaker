@@ -168,7 +168,7 @@ class Panther(MinionCard):
 
 class IncreaseStats(ChoiceCard):
     def __init__(self):
-        super().__init__("Give your other minions +2/+2 and taunt", 0,
+        super().__init__("Give your other minions +2/+2", 0,
                          CHARACTER_CLASS.DRUID, CARD_RARITY.LEGENDARY, False)
 
 
@@ -182,8 +182,7 @@ class Cenarius(MinionCard):
     def __init__(self):
         super().__init__("Cenarius", 9, CHARACTER_CLASS.DRUID, CARD_RARITY.LEGENDARY, choices=[
             Choice(IncreaseStats(), Give([Buff(ChangeAttack(2)),
-                                          Buff(ChangeHealth(2)),
-                                          Buff(Taunt())]), MinionSelector()),
+                                          Buff(ChangeHealth(2))]), MinionSelector()),
             Choice(SummonTreants(), Summon(TauntTreant(), 2), PlayerSelector())
         ])
 
