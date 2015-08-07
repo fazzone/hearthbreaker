@@ -21,7 +21,7 @@ class Jaina(HeroCard):
 
 class Uther(HeroCard):
     def __init__(self):
-        super().__init__("Uther the Lightbringer", CHARACTER_CLASS.PALADIN, 30, PaladinPower)
+        super().__init__("Uther Lightbringer", CHARACTER_CLASS.PALADIN, 30, PaladinPower)
 
 
 class Anduin(HeroCard):
