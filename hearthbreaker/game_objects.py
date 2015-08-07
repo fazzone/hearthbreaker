@@ -169,6 +169,9 @@ class GameObject:
         self.player = None
         self._attached = False
 
+        #the ID of the entity in the real Hearthstone game we are representing
+        self.representedid = None
+
     def attach(self, obj, player):
         if not self._attached:
             self.player = player
@@ -1030,6 +1033,8 @@ class Minion(Character):
         else:
             new_minion.game = new_owner.game
 
+        new_minion.representedid = self.representedid
+
         return new_minion
 
     @staticmethod
@@ -1116,6 +1121,8 @@ class Hero(Character):
         new_hero.auras = copy.deepcopy(self.auras)
         new_hero.buffs = copy.deepcopy(self.buffs)
         new_hero.card = type(self.card)()
+
+        new_hero.representedid = self.representedid
 
         return new_hero
 
